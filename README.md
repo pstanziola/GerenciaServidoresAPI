@@ -23,7 +23,7 @@ utilizando CQRS com MediatR, Entity Framework Core e testes automatizados.
 1. Clone o repositório
 
 ```bash
-git clone https://github.com/seu-usuario/GerenciaServidoresAPI.git
+git clone https://github.com/pstanziola/GerenciaServidoresAPI.git
 cd GerenciaServidoresAPI
 ```
 
@@ -71,18 +71,23 @@ docker run -p 5000:80 gerenciaservidoresapi
 
 ### Caso o migrations não funcione, usar o path completo:
 
+```bash
 ~/.dotnet/tools/dotnet-ef migrations add InitialCreate --project GerenciaServidoresAPI --startup-project GerenciaServidoresAPI
 ~/.dotnet/tools/dotnet-ef database update --project GerenciaServidoresAPI --startup-project GerenciaServidoresAPI
 ~/.dotnet/tools/dotnet-ef migrations add SeedOrgaosAndLotacoes
 ~/.dotnet/tools/dotnet-ef database update
+```
 
 Endpoints Disponíveis:
 
 - Listar servidores
+  ```
   GET /api/servidores
   Query Params (opcionais): nome,orgao,lotacao
+  ```
 
 - Cadastrar servidor
+ ```
   POST /api/servidores
   Body:
   {
@@ -93,8 +98,10 @@ Endpoints Disponíveis:
   "lotacaoId": "22222222-2222-2222-2222-222222222222",
   "sala": "B101"
   }
+```
 
 - Atualizar servidor
+```
   PUT /api/servidores/{id}
   Body:
   {
@@ -107,6 +114,9 @@ Endpoints Disponíveis:
   "sala": "C202",
   "ativo": true
   }
+```
 
 - Inativar servidor (exclusão lógica)
+```bash
   DELETE /api/servidores/{id}
+```
